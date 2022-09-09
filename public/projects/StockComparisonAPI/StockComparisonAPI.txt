@@ -1,0 +1,1 @@
+This stock comparison Single Page Application was built using the IEXCloud API for Stock Data, using the simulated environment. It also uses the google charts API for rendering the datas bar chart. It allows the user to add as many current stock prices as requested, and updates every 5 seconds.

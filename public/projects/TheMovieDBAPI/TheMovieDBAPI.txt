@@ -1,0 +1,2 @@
+This project was my introduction to using RESTful API with JSON Formatted Data. It is a Single-Page Application that returns four recently released movies, as well as giving you an option to see some movies that were released on your birth year (or any year in general, but was intended for birth year).
+

@@ -1,0 +1,2 @@
+I'm currently working on a react version of this portfolio which will use some more complexities like using text files to load certain sections, and other specialized components.
+

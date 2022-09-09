@@ -1,0 +1,5 @@
+﻿Hi! My name is Morgan, and I am a Web Developer and Engineer. Most recently I worked with The College of Liberal Arts and Sciences with ASU, and I recently just finished my position there. I’ve worked with a lot of technologies, like Drupal, Wordpress, Shopify, and similar LAMP and JS Stacks. I’m currently expanding my knowledge of development by practicing React.js and Web Application Development. My experience is primarily Front-End and UX, but I also have Full-Stack in the way of extensions I developed for Wordpress, Drupal, and with Coldfusion for internal employee usage.
+<br><br>
+Growing up, I was primarily raised internationally, but I’ve been back in America for about 10 years now. As such, I do have a bit of an advantage and keeping my mind open and adaptable, which I hope has aided my problem-solving process as I’ve learned and improved.
+<br><br>
+Since you’re on this site, you probably know my github, but in case you don’t my portfolio of repositories can be found via the button below. I hope you like what you see!
