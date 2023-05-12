@@ -138,7 +138,7 @@ function Card({ id, datanav, cardClasses, cardType, cardBody, projTitle, btnLink
               <div className="projDesc col">
                 <h3 className="h3">{projTitle}</h3>
                 <TextFile fileName={"projects/" + directoryName + "/" + directoryName} />
-                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
+                <a className='btn btn-primary my-5' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
               </div>
               <div className="projImg py-3">
                 <LogoFile projTitle={directoryName} />
