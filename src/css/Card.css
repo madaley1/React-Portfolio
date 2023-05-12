@@ -1,4 +1,5 @@
-article, section#About {
+article,
+section#About {
   margin: auto;
   width: 95vw;
   background-color: rgb(40, 40, 40);
@@ -33,13 +34,15 @@ article section {
 .projImg {
   width: max-content;
   height: max-content;
+  margin: auto;
   border-radius: 10px;
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.29));
 }
 
 .projImg img {
   margin: 0 auto 5em auto;
-  height: 26vh;
+  /* height: 26vh; */
+  max-width: 25vw;
 }
 
 .carousel-caption {
@@ -81,11 +84,11 @@ article section {
   mix-blend-mode: difference;
 }
 
-#About .projCard{
+#About .projCard {
   margin: 1em 0;
 }
 
-.projCard.flex-row{
+.projCard.flex-row {
   text-align: end;
 }
 
