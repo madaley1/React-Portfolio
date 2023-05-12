@@ -14,7 +14,7 @@ import '../css/Heading.css';
  * @returns A header formatted with bootstrap
  */
 
-function Heading({id, datanav}) {
+function Heading({ id, datanav }) {
   return (
     <header id={id} datanav={`${datanav}`} className="spin">
       <div className="row align-items-center">
@@ -24,7 +24,7 @@ function Heading({id, datanav}) {
         </div>
         <div className="col mx-5 namePlate">
           <h1>Morgan Daley</h1>
-          <p>Software Engineer<br />Web Application Developer</p>
+          <p>Full Stack Engineer</p>
           <p><small>Morgan Daley &copy; 2021</small></p>
         </div>
       </div>
