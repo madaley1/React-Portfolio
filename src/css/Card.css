@@ -1,9 +1,8 @@
-article {
+article, section#About {
   margin: auto;
   width: 95vw;
   background-color: rgb(40, 40, 40);
   padding: 3em;
-
   border-radius: 10px;
 }
 
@@ -13,10 +12,6 @@ article section {
   padding: 1em;
   border: 2px solid black;
   border-radius: 5px;
-}
-
-.projCard.flex-row-reverse {
-  text-align: right;
 }
 
 .projDesc {
@@ -84,4 +79,16 @@ article section {
 .carousel-control-prev,
 .carousel-control-next {
   mix-blend-mode: difference;
+}
+
+#About .projCard{
+  margin: 1em 0;
+}
+
+.projCard.flex-row{
+  text-align: end;
+}
+
+.projCard.flex-row-reverse {
+  text-align: start;
 }

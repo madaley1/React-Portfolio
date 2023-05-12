@@ -36,14 +36,16 @@ root.render(
     <article className="my-5" id="pastProjects" datanav="true">
       <h2 className="h2">Past Projects</h2>
       <p>Finished projects or projects that I am no longer participating in actively.</p>
-      <Card cardType='carousel' projTitle='TheMovieDB API' datanav={false}/>
-      <Card cardType='carousel' projTitle='Stock Comparison API' datanav={false} btnLink="https://jsfiddle.net/madaley/r2Lpeg3j/" btnText="jsFiddle Link"/>
+      <Card cardType='logo'     projTitle="The College Drupal Distribution" datanav={false} btnLink="https://drupal.thecollege.asu.edu"           btnText="The College Distribution Site"/>
+      <Card cardType='carousel' projTitle='Stock Comparison API'            datanav={false} btnLink="https://jsfiddle.net/madaley/r2Lpeg3j/"      btnText="jsFiddle Link"/>
+      <Card cardType='carousel' projTitle='TheMovieDB API'                  datanav={false}/>
+      <Card cardType="logo"     projTitle="Web Portfolio"                   datanav={false} btnLink='https://github.com/madaley1/React-Portfolio' btnText="GitHub Repo" secLink="./old-site/" secLinkText="Check out the old site" />
     </article>
     <article className="my-5" id="currentProjects" datanav="true">
       <h2 className="h2">Current Projects</h2>
       <p>Projects I am actively working on, and either are being updated or are in the works for a future first release.</p>
-      <Card cardType="logo" projTitle="Web Portfolio" datanav={false}/>
-      <Card cardType="logo" projTitle="The KenpoNet"  datanav={false}/>
+      <Card cardType="logo" projTitle="SleepyNova"   datanav={false} btnLink="https://sleepynova.blog" btnText="Blog Site" />
+      <Card cardType="logo" projTitle="The KenpoNet" datanav={false} />
     </article>
     <Card cardType="contact" id="contact" datanav={true}/>
   </React.StrictMode>

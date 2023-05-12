@@ -7,6 +7,19 @@ function navAgg() {
   return navList;
 }
 
+function reverseRows(){
+  let containers = $('article');
+  for(let i in containers){
+    let section = $(`article:eq(${i}) section.projCard`)
+    for(let i = 0; i < section.length; i++){
+      if(i%2 == 0){
+        $(section[i]).addClass('flex-row-reverse').removeClass('flex-row');
+      }
+    }
+  }
+}
+
 $(function(){
   $('#Navbar').html(`<ul class="navbar-nav"> ${navAgg()} </ul>`);
+  reverseRows();
 });

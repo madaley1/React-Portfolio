@@ -24,178 +24,180 @@ import '../css/Card.css';
  * @returns A Card Component
 */
 
-function Card({id, datanav, cardClasses, cardType, cardBody, projTitle, btnLink, btnText, secLink, secLinkText}) {
-    switch(cardType){
-        case 'text':
-            if(cardClasses){
-                cardClasses += " px-3";
-            }else{
-                cardClasses = "px-3";
-            }
-        
-            if(btnLink){
-                if(secLink){
-                    return(
-                        <article id={id} datanav={`${datanav}`}>
-                            <h2 className="h2" >About Me</h2>
-                            <TextFile className={cardClasses} fileName={'./text/'+cardBody} /> 
-                            <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
-                            <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={secLink}>{secLinkText}</a>
-                        </article>
-                    )
-                }else{
-                    return(
-                        <article id={id} datanav={`${datanav}`}>
-                            <h2 className="h2" >About Me</h2>
-                            <TextFile className={cardClasses} fileName={'./text/'+cardBody} /> 
-                            <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
-                        </article>
-                    )
-                }
-            }
-            return(
-                <article id={id} datanav={datanav}>
-                    <h2 className="h2" >About Me</h2>
-                    <TextFile className={cardClasses} fileName={'./text/'+cardBody} /> 
-                </article>
-            );
-            break;
-        case 'carousel':
-            var directoryName = projTitle.replace(/\s/g, '');
-            var uid           = uuid();
-            var cardId        = "card-"+uid.slice(0,4);
-            
-            if(cardClasses){
-                cardClasses += " projCard mt-3";
-            }else{
-                cardClasses = "projCard mt-3";
-            }
-            if(btnLink){
-                if(secLink){
-                    return(
-                        <section className={"row flex-row-reverse " + cardClasses} id={cardId} datanav={`${datanav}`}>
-                            <div className="projDesc col">
-                                <h3 className="h3">{projTitle}</h3>
-                                <TextFile fileName={"projects/"+directoryName+"/"+directoryName} />
-                                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
-                                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={secLink}>{secLinkText}</a>
-                            </div>
-                            <CarouselImages projTitle={directoryName} uid={cardId+"-carousel"} />
-                        </section>
-                    );
-                }else{
-                    return(
-                        <section className={"row flex-row-reverse " + cardClasses} id={cardId} datanav={`${datanav}`}>
-                            <div className="projDesc col">
-                                <h3 className="h3">{projTitle}</h3>
-                                <TextFile fileName={"projects/"+directoryName+"/"+directoryName} />
-                                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
-                            </div>
-                            <CarouselImages projTitle={directoryName} uid={cardId+"-carousel"} />
-                        </section>
-                    );
-                }
-            }else{
-                return(
-                    <section className={"row flex-row-reverse " + cardClasses} id={cardId} datanav={`${datanav}`}>
-                        <div className="projDesc col">
-                            <h3 className="h3">{projTitle}</h3>
-                            <TextFile fileName={"projects/"+directoryName+"/"+directoryName} />
-                        </div>
-                        <CarouselImages projTitle={directoryName} uid={cardId+"-carousel"} />
-                    </section>
-                );
-            }
-            break;   
-        case 'logo':
-            var directoryName = projTitle.replace(/\s/g, '');
-            
-            if(cardClasses){
-                cardClasses += " projCard mt-3";
-            }else{
-                cardClasses = "projCard mt-3";
-            }
-            if(btnLink){
-                
-                if(secLink){
-                    return(
-                        <section className={"row flex-row " + cardClasses} id={id} datanav={`${datanav}`}>
-                            <div className="projDesc col">
-                                <h3 className="h3">{projTitle}</h3>
-                                <TextFile fileName={"projects/"+directoryName+"/"+directoryName} />
-                                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
-                                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={secLink}>{secLinkText}</a>
-                            </div>
-                            <div className="projImg py-3">   
-                                <LogoFile projTitle={directoryName}/>
-                            </div>
-                        </section>
-                    );
-                }else{
-                    return(
-                        <section className={"row flex-row " + cardClasses} id={id} datanav={`${datanav}`}>
-                            <div className="projDesc col">
-                                <h3 className="h3">{projTitle}</h3>
-                                <TextFile fileName={"projects/"+directoryName+"/"+directoryName} />
-                                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
-                            </div>
-                            <div className="projImg py-3">   
-                                <LogoFile projTitle={directoryName}/>
-                            </div>
-                        </section>
-                    );
-                }
-            }else{
-                return(
-                    <section className={"row flex-row " + cardClasses} id={id} datanav={`${datanav}`}>
-                        <div className="projDesc col">
-                            <h3 className="h3">{projTitle}</h3>
-                            <TextFile fileName={"projects/"+directoryName+"/"+directoryName} />
-                        </div>
-                        <div className="projImg py-3">   
-                            <LogoFile projTitle={directoryName}/>
-                        </div>
-                    </section>
-                );
-            }
+function Card({ id, datanav, cardClasses, cardType, cardBody, projTitle, btnLink, btnText, secLink, secLinkText }) {
+  switch (cardType) {
+    default:
+    case 'text':
+      if (cardClasses) {
+        cardClasses += " projCard px-3";
+      } else {
+        cardClasses = "projCard px-3";
+      }
 
-            
-            break;
-        case 'contact':
-            if(cardClasses){
-                cardClasses += " row my-3 contact";
-            }else{
-                cardClasses = " row my-3 contact";
-            }
-
-            return(
-                <article id={id} datanav={`${datanav}`}>
-                    <h2 className='h2'>Contact Me</h2>
-                    <p>If you want to contact me, feel free to fill out the form below, or check out my socials!</p>
-                    <section className={cardClasses} id={id} datanav={`${datanav}`}>
-                        <Form className="col" />
-                        <Socials className="col" />
-                    </section>
-                </article>
-            );
-            break;
+      if (btnLink) {
+        if (secLink) {
+          return (
+            <section id={id} datanav={`${datanav}`}>
+              <h2 className="h2" >About Me</h2>
+              <TextFile className={cardClasses} fileName={'./text/' + cardBody} />
+              <a className='btn btn-primary m-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
+              <a className='btn btn-primary m-3' target="_blank" rel="noopener noreferrer" href={secLink}>{secLinkText}</a>
+            </section>
+          )
+        } else {
+          return (
+            <section id={id} datanav={`${datanav}`}>
+              <h2 className="h2" >About Me</h2>
+              <TextFile className={cardClasses} fileName={'./text/' + cardBody} />
+              <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
+            </section>
+          )
         }
+      }
+      return (
+        <article id={id} datanav={datanav}>
+          <h2 className="h2" >About Me</h2>
+          <TextFile className={cardClasses} fileName={'./text/' + cardBody} />
+        </article>
+      );
+      break;
+    case 'carousel':
+      var directoryName = projTitle.replace(/\s/g, '');
+      var uid = uuid();
+      var cardId = "card-" + uid.slice(0, 4);
+
+      if (cardClasses) {
+        cardClasses += " projCard mt-3";
+      } else {
+        cardClasses = "projCard mt-3";
+      }
+      if (btnLink) {
+        if (secLink) {
+          return (
+            <section className={"row flex-row " + cardClasses} id={cardId} datanav={`${datanav}`}>
+              <div className="projDesc col">
+                <h3 className="h3">{projTitle}</h3>
+                <TextFile fileName={"projects/" + directoryName + "/" + directoryName} />
+                <a className='btn btn-primary m-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
+                <a className='btn btn-primary m-3' target="_blank" rel="noopener noreferrer" href={secLink}>{secLinkText}</a>
+              </div>
+              <CarouselImages projTitle={directoryName} uid={cardId + "-carousel"} />
+            </section>
+          );
+        } else {
+          return (
+            <section className={"row flex-row " + cardClasses} id={cardId} datanav={`${datanav}`}>
+              <div className="projDesc col">
+                <h3 className="h3">{projTitle}</h3>
+                <TextFile fileName={"projects/" + directoryName + "/" + directoryName} />
+                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
+              </div>
+              <CarouselImages projTitle={directoryName} uid={cardId + "-carousel"} />
+            </section>
+          );
+        }
+      } else {
+        return (
+          <section className={"row flex-row " + cardClasses} id={cardId} datanav={`${datanav}`}>
+            <div className="projDesc col">
+              <h3 className="h3">{projTitle}</h3>
+              <TextFile fileName={"projects/" + directoryName + "/" + directoryName} />
+            </div>
+            <CarouselImages projTitle={directoryName} uid={cardId + "-carousel"} />
+          </section>
+        );
+      }
+      break;
+    case 'logo':
+      var directoryName = projTitle.replace(/\s/g, '');
+
+      if (cardClasses) {
+        cardClasses += " projCard mt-3";
+      } else {
+        cardClasses = "projCard mt-3";
+      }
+      if (btnLink) {
+
+        if (secLink) {
+          return (
+            <section className={"row flex-row " + cardClasses} id={id} datanav={`${datanav}`}>
+              <div className="projDesc col">
+                <h3 className="h3">{projTitle}</h3>
+                <TextFile fileName={"projects/" + directoryName + "/" + directoryName} />
+                <a className='btn btn-primary m-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
+                <a className='btn btn-primary m-3' target="_blank" rel="noopener noreferrer" href={secLink}>{secLinkText}</a>
+              </div>
+              <div className="projImg py-3">
+                <LogoFile projTitle={directoryName} />
+              </div>
+            </section>
+          );
+        } else {
+          return (
+            <section className={"row flex-row " + cardClasses} id={id} datanav={`${datanav}`}>
+              <div className="projDesc col">
+                <h3 className="h3">{projTitle}</h3>
+                <TextFile fileName={"projects/" + directoryName + "/" + directoryName} />
+                <a className='btn btn-primary my-3' target="_blank" rel="noopener noreferrer" href={btnLink}>{btnText}</a>
+              </div>
+              <div className="projImg py-3">
+                <LogoFile projTitle={directoryName} />
+              </div>
+            </section>
+          );
+        }
+      } else {
+        return (
+          <section className={"row flex-row " + cardClasses} id={id} datanav={`${datanav}`}>
+            <div className="projDesc col">
+              <h3 className="h3">{projTitle}</h3>
+              <TextFile fileName={"projects/" + directoryName + "/" + directoryName} />
+            </div>
+            <div className="projImg py-3">
+              <LogoFile projTitle={directoryName} />
+            </div>
+          </section>
+        );
+      }
+
+
+      break;
+    case 'contact':
+      if (cardClasses) {
+        cardClasses += " row my-3 contact";
+      } else {
+        cardClasses = " row my-3 contact";
+      }
+
+      return (
+        <article id={id} datanav={`${datanav}`}>
+          <h2 className='h2'>Contact Me</h2>
+          <p>If you want to contact me, feel free to fill out the form below, or check out my socials!</p>
+          <section className={cardClasses} id={id} datanav={`${datanav}`}>
+            <Form className="col" />
+            <Socials className="col" />
+          </section>
+        </article>
+      );
+      break;
+
+  }
 }
 
 Card.defaultProps = {
-    datanav: false
+  datanav: false
 }
 
 Card.propTypes = {
-    id: PropTypes.string,
-    datanav: PropTypes.bool.isRequired,
-    cardClasses: PropTypes.string,
-    cardType: PropTypes.string.isRequired,
-    cardBody: PropTypes.string,
-    projTitle: PropTypes.string,
-    btnLink: PropTypes.string,
-    secLink: PropTypes.string,
-    secLinkText: PropTypes.string
+  id: PropTypes.string,
+  datanav: PropTypes.bool.isRequired,
+  cardClasses: PropTypes.string,
+  cardType: PropTypes.string.isRequired,
+  cardBody: PropTypes.string,
+  projTitle: PropTypes.string,
+  btnLink: PropTypes.string,
+  secLink: PropTypes.string,
+  secLinkText: PropTypes.string
 }
 
 export default Card;

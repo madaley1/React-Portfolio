@@ -1,4 +1,4 @@
-import {React, useState, useRef} from 'react'
+import { React, useState, useRef } from 'react'
 import PropTypes from 'prop-types';
 import emailjs from "emailjs-com";
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -9,7 +9,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
  * @returns The contact form
 */
 
-export function Form({className}){
+export function Form({ className }) {
   const form = useRef();
 
   const [formData, setFormData] = useState({
@@ -20,9 +20,9 @@ export function Form({className}){
   });
 
   const captchaRef = useRef(null)
-  
+
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const sendEmail = (e) => {
@@ -32,20 +32,20 @@ export function Form({className}){
       ...formData,
       'g-recaptcha-response': token,
     };
-    
-    emailjs.send(process.env.REACT_APP_EMAILJS_GMAIL_SERVICEID, 
-                 process.env.REACT_APP_EMAILJS_TEMPLATE_KEY, 
-                 params, 
-                 process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-      ).then((result) => {
-        e.target.reset();
-        console.log(result.text);
-      }, (error) => {
-        console.log(error);
-      });
+
+    emailjs.send(process.env.REACT_APP_EMAILJS_GMAIL_SERVICEID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_KEY,
+      params,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    ).then((result) => {
+      e.target.reset();
+      console.log(result.text);
+    }, (error) => {
+      console.error(error);
+    });
   };
 
-  return(
+  return (
     <>
       <h3 className='h3'>Contact Form</h3>
       <form className={"d-flex flex-column " + className} ref={form} onSubmit={sendEmail}>

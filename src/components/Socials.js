@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const get_socials_data = async () => {
   //fetches data and waits for its return, uses public url
   const res = await fetch(`${process.env.REACT_APP_JSON_SERVER}/socials`);
-  
+
   //checking for errors. var.ok returns bool
   if (!res.ok) {
     throw res;
@@ -33,18 +33,18 @@ export class Socials extends React.Component {
 
   constructor() {
     super();
-    this.state = {isLoading: true}
+    this.state = { isLoading: true }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     get_socials_data().then((res) => {
       let array = [];
-      for(let i in res){
+      for (let i in res) {
         array.push(res[i]);
       }
 
-      let temp = array.map((item)=>(
-        <p className='mr-3 logos'>
+      let temp = array.map((item, index) => (
+        <p className='mr-3 logos' key={index}>
           <a className="nav-link" href={item.link}>
             <FontAwesomeIcon icon={["fab", item.logo]} />
           </a>
@@ -52,8 +52,8 @@ export class Socials extends React.Component {
       ));
 
       this.setState({
-        json: temp, 
-        isLoading: false, 
+        json: temp,
+        isLoading: false,
         isLoaded: true
       });
 
@@ -61,10 +61,10 @@ export class Socials extends React.Component {
     });
   }
 
-  render(){
+  render() {
     let socials = this.state.socials;
     let json = this.state.json;
-    return(
+    return (
       <div className={'btn-row d-flex flex-column ' + this.props.className}>
         <h3 className='h3 mx-3'>Socials</h3>
         <div className='d-flex flex-row'>

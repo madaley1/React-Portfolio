@@ -1,0 +1,262 @@
+/*CSS Reset + Font Specification*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+@font-face {
+  font-family: 'SourceCodePro';
+  src: url('../fonts/SourceCodePro-Regular.ttf') format('truetype');
+  src: url('../fonts/SourceCodePro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DroidSansMono';
+  src: url('../fonts/DroidSansMono.ttf') format('truetype');
+}
+
+:root {
+  --grey: rgb(24, 24, 24);
+  --green: #23591d;
+  --lgreen: #377930;
+  --blue: #449398;
+  /*variables for gradient*/
+  --d: 2500ms;
+  --angle: 62.5deg;
+  --c2: rgba(168, 239, 255, 0.021);
+}
+
+/* Beginning of styles */
+
+#toTop {
+  position: sticky;
+  bottom: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 1em 1em;
+  background-color: var(--grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+#toTop i {
+  color: rgba(230, 230, 230, 0.9);
+}
+
+body {
+  font-family: 'DroidSansMono', 'SourceCodeMono', sans-serif;
+  background-color: rgb(10, 10, 10);
+  color: rgba(230, 230, 230, 0.9);
+  padding: 1em;
+}
+
+header.spin {
+  width: 97.5vw;
+  height: 75vh;
+  border-radius: 10px;
+  padding: 5px;
+  background-image: url(https://www.public.asu.edu/~madaley1/images/borderAnimation.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+header.spin>div {
+  margin: auto 0 auto auto;
+  text-align: right;
+  font-size: 3em;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-sizing: stretch;
+  background: rgb(44, 44, 44);
+}
+
+/* #logo{
+  padding-right: 3em;
+} */
+
+/* .namePlate{
+  padding-right: 1.5em;
+} */
+
+nav.navbar {
+  background-image: linear-gradient(transparent, rgba(255, 255, 255, 0.139));
+  border: 1px solid rgba(230, 230, 230, 0.9);
+  border-radius: 15px;
+}
+
+nav a.nav-link,
+#toTop a {
+  color: rgba(230, 230, 230, 0.9);
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+nav a.nav-link:visited,
+#toTop a {
+  color: rgba(230, 230, 230, 0.9);
+}
+
+header .namePlate>* {
+  margin: 1em 0;
+}
+
+header .namePlate * {
+  text-align: right;
+}
+
+header img#logo {
+  max-width: 30vw;
+  max-height: 30vw;
+}
+
+.spacer {
+  height: 5vh;
+  margin: auto;
+  margin-top: 6em;
+}
+
+nav {
+  margin: auto;
+}
+
+nav ul {
+  width: max-content;
+}
+
+nav a {
+  color: rgba(230, 230, 230, 0.9);
+  text-decoration: none;
+}
+
+nav a:visited {
+  color: rgba(230, 230, 230, 0.9);
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  flex-flow: column wrap;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+}
+
+nav ul * {
+  display: inline;
+}
+
+nav ul a {
+  margin: .5em;
+}
+
+.projCard {
+  text-align: right;
+}
+
+article {
+  margin: auto;
+  width: 95vw;
+  background-color: rgb(40, 40, 40);
+  padding: 3em;
+
+  border-radius: 10px;
+}
+
+article section {
+  background-color: rgba(255, 255, 255, 0.048);
+  /* box-shadow: 3px 3px 2px black; */
+  padding: 1em;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.projDesc {
+  padding: 0 2em;
+}
+
+.projDesc h3 {
+  padding-bottom: 1em;
+}
+
+.projCard {
+  margin: 5em 0;
+}
+
+.logos {
+  font-size: 5em;
+}
+
+.socials {
+  width: 50%;
+  margin: 0 10em 0 auto;
+}
+
+.projImg {
+  width: max-content;
+  height: max-content;
+  border-radius: 10px;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.29));
+}
+
+.projImg.carousel {
+  width: 50%;
+}
+
+.projImg img {
+  margin: 0 auto 5em auto;
+  height: 26vh;
+}
+
+.carousel-caption {
+  bottom: 0;
+  padding: 0;
+}
+
+.carousel-indicators {
+  position: relative;
+}
+
+.modal-dialog {
+  max-width: 50vw !important;
+}
+
+.modal-dialog .carousel {
+  width: 100%;
+}
+
+.projDesc {
+  position: relative;
+}
+
+.projDesc .btn-row {
+  position: absolute;
+  bottom: 0;
+}
+
+.projCard.flex-row .btn-row{
+  width: 95%;
+  flex-direction: row-reverse;
+}
+
+.projCard .carousel-inner {
+  width: 33vw;
+}
+
+.modal .projImg img {
+  height: 70vh;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  mix-blend-mode: difference;
+}

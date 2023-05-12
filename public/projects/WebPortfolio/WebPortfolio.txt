@@ -1,2 +1,1 @@
-I'm currently working on a react version of this portfolio which will use some more complexities like using text files to load certain sections, and other specialized components.
-
+You're looking at it! This is a react version of my portfolio, and it is regularly updated with my current projects. You can view the old site if you'd like, it was hard coded which is why I decided to swap it for this react version to more easily edit the code.

@@ -7,7 +7,7 @@ import 'bootstrap/js/dist/carousel.js.map'
 const get_text_file = async (filepath) => {
   //fetches data and waits for its return, uses public url
   const res = await fetch(`${process.env.PUBLIC_URL}/${filepath}`);
-  
+
   //checking for errors. var.ok returns bool
   if (!res.ok) {
     throw res;
@@ -39,7 +39,7 @@ export function TextFile({ fileName, className }) {
 const get_logo_file = async () => {
   //fetches data and waits for its return, uses public url
   const res = await fetch(`${process.env.REACT_APP_JSON_SERVER}/logos/`);
-  
+
   //checking for errors. var.ok returns bool
   if (!res.ok) {
     throw res;
@@ -50,19 +50,19 @@ const get_logo_file = async () => {
 export function LogoFile({ projTitle, className }) {
   const [src, setSrc] = useState(``);
   useEffect(() => {
-    get_logo_file().then((res)=>{
+    get_logo_file().then((res) => {
       setSrc(res[projTitle]["src"])
     }).catch(console.error);
   }, [projTitle]);
   return (
-    <img className={"d-block px-3 m-0 "+className} src={src} />
+    <img className={"d-block px-3 m-0 " + className} src={src} />
   );
 
 }
 
 const get_slide_data = async () => {
   const res = await fetch(`${process.env.REACT_APP_JSON_SERVER}/carousels/`);
-  
+
   if (!res.ok) {
     throw res;
   }
@@ -77,7 +77,7 @@ const get_slide_data = async () => {
  * @returns A set of slides formatted in a carousel
  */
 
-export class CarouselImages extends React.Component{
+export class CarouselImages extends React.Component {
   state = {
     json: {},
     isLoading: false,
@@ -88,50 +88,64 @@ export class CarouselImages extends React.Component{
 
   constructor() {
     super();
-    this.state = {isLoading: true}
+    this.state = { isLoading: true }
   }
 
-  
-  componentDidMount(){
+
+  componentDidMount() {
     get_slide_data().then((res) => {
       this.setState({
-        json: res, 
-        isLoading: false, 
+        json: res,
+        isLoading: false,
         isLoaded: true
-      }); 
-      this.process_Indicators(); 
-      this.process_Slides(); 
+      }, () => {
+        if (this.state.json.length === 0) console.error('no json data', res)
+        this.process_Indicators();
+        this.process_Slides();
+      });
     });
   }
 
-  process_Indicators(){
+  process_Indicators() {
+    this.setState({
+      isLoading: true,
+      isLoaded: false
+    });
     let temp = "";
-    let json = this.state.json;
-    for(let i in json[this.props.projTitle]){
-      if(i == 1){
-        temp += `<button type="button" data-bs-target=#${this.props.uid} data-bs-slide-to="${(i-1)}" class="active" aria-label="${"Slide " + (i)}" aria-current="true"></button>`
-      }else{
-        temp += `<button type="button" data-bs-target=#${this.props.uid} data-bs-slide-to="${(i-1)}" class="" aria-label="${"Slide " + (i)}" aria-current="true"></button>`
+    let { json } = this.state;
+    for (let i in json[this.props.projTitle]) {
+      if (i == 1) {
+        temp += `<button type="button" data-bs-target=#${this.props.uid} data-bs-slide-to="${(i - 1)}" class="active" aria-label="${"Slide " + (i)}" aria-current="true"></button>`
+      } else {
+        temp += `<button type="button" data-bs-target=#${this.props.uid} data-bs-slide-to="${(i - 1)}" class="" aria-label="${"Slide " + (i)}" aria-current="true"></button>`
       }
     }
-    this.setState({indicators: temp});
+    this.setState({
+      indicators: temp,
+      isLoading: false,
+      isLoaded: true
+    });
   }
 
-  process_Slides(){
+  process_Slides() {
+    this.setState({
+      isLoading: true,
+      isLoaded: false
+    });
     let temp = "";
     let json = this.state.json;
-    for(let i in json[this.props.projTitle]){
+    for (let i in json[this.props.projTitle]) {
       let index = json[this.props.projTitle][`${i}`];
-      if(i == 1){
-        temp +=  `<div class="carousel-item active">
+      if (i == 1) {
+        temp += `<div class="carousel-item active">
                     <img src=${index.src} class="d-block">
                     <div class="carousel-caption d-none d-md-block">
                       <h5 class="h5">${index.heading}</h5>
                       <p>${index.desc}</p>
                     </div>
                   </div>`;
-      }else{
-        temp +=  `<div class="carousel-item">
+      } else {
+        temp += `<div class="carousel-item">
                     <img src=${index.src} class="d-block">
                     <div class="carousel-caption d-none d-md-block">
                       <h5 class="h5">${index.heading}</h5>
@@ -140,23 +154,26 @@ export class CarouselImages extends React.Component{
                   </div>`;
       }
     }
-    this.setState({slides: temp});
+    this.setState({
+      slides: temp,
+      isLoading: false,
+      isLoaded: true
+    });
   }
 
   render() {
-    
     let indicators = this.state.indicators;
     let slides = this.state.slides;
-    return(
+    return (
       <div className={`carousel slide projImg py-2 col-4 ${this.props.className}`} id={this.props.uid} data-bs-ride="carousel">
         {
-          this.state.isLoaded ? <><div className="carousel-indicators" dangerouslySetInnerHTML={{__html:String.raw`${indicators}`}}></div><div className="carousel-inner" dangerouslySetInnerHTML={{__html:String.raw`${slides}`}}></div></> : <p>Loading...</p>
+          this.state.isLoaded ? <><div className="carousel-indicators" dangerouslySetInnerHTML={{ __html: String.raw`${indicators}` }}></div><div className="carousel-inner" dangerouslySetInnerHTML={{ __html: String.raw`${slides}` }}></div></> : <p>Loading...</p>
         }
-        <button className="carousel-control-prev" type="button" data-bs-target={"#"+this.props.uid} data-bs-slide="prev">
+        <button className="carousel-control-prev" type="button" data-bs-target={"#" + this.props.uid} data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
         </button>
-        <button className="carousel-control-next" type="button" data-bs-target={"#"+this.props.uid} data-bs-slide="next">
+        <button className="carousel-control-next" type="button" data-bs-target={"#" + this.props.uid} data-bs-slide="next">
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
