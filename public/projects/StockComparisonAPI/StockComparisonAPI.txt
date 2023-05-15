@@ -1,3 +1,3 @@
 This stock comparison Single Page Application was built using the IEXCloud API for Stock Data, using the simulated environment. It also uses the google charts API for rendering the datas bar chart. It allows the user to add as many current stock prices as requested, and updates every 5 seconds.
-<br>
+<br><br>
 The API I built this with seems to no longer allow for sandbox for free. I may update it in the future, or just rebuild it entirely in Typescript, however the code still exists if you're curious and want to check it out!
