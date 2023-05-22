@@ -45,6 +45,7 @@ root.render(
     <article className="my-5" id="currentProjects" datanav="true">
       <h2 className="h2">Current Projects</h2>
       <p>Projects I am actively working on, and either are being updated or are in the works for a future first release.</p>
+      <Card cardType="logo" projTitle="Web Portfolio v2" datanav={false} btnLink='https://github.com/madaley1/portfolio-react-v2' btnText="GitHub Repo" />
       <Card cardType="logo" projTitle="SleepyNova" datanav={false} btnLink="https://sleepynova.blog" btnText="Blog Site" />
       <Card cardType="logo" projTitle="The KenpoNet" datanav={false} />
     </article>
