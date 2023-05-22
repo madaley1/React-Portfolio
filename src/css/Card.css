@@ -48,6 +48,7 @@ article:not(#About) .projCard {
   margin: 0 auto 5em auto;
   /* height: 26vh; */
   max-width: 25vw;
+  width: 25vw;
 }
 
 .carousel-caption {
